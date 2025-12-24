@@ -5,7 +5,7 @@ from openai import OpenAI
 
 
 
-endpoint = "endpoint_url_here"  # Replace with your actual endpoint URL
+endpoint = "https://shant-mjjz4han-eastus2.cognitiveservices.azure.com/openai/v1"  # Replace with your actual endpoint URL
 deployment_name = "gpt-4o-standard"
 
 
@@ -30,5 +30,6 @@ completion = client.chat.completions.create(
         }
     ],
 )
+
 
 print(completion.choices[0].message)
