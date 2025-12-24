@@ -10,7 +10,8 @@ deployment_name = "gpt-4o-standard"
 
 
 client = OpenAI(
-    base_url=endpoint
+    base_url=endpoint,
+    api_key = api_keys
 )
 
 # Read the system prompt from an external file
@@ -33,3 +34,4 @@ completion = client.chat.completions.create(
 
 
 print(completion.choices[0].message)
+
