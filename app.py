@@ -6,9 +6,6 @@ from openai import OpenAI
 # Initialize FastAPI app
 app = FastAPI()
 
-@app.get("/")
-def root():
-    return{"status": "running"}
 
 # Define your endpoint, deployment name, and API key
 endpoint = "https://shant-mjjz4han-eastus2.cognitiveservices.azure.com/openai/v1"  # Replace with your actual endpoint URL
@@ -22,6 +19,10 @@ client = OpenAI(
     api_key=AZURE_OPENAI_API_KEY
 )
 
+@app.get("/")
+def root():
+    return{"status": "running"}
+    
 # Read the system prompt from an external file
 with open("system.promp.txt", "r") as file:
     system_prompt = file.read().strip()
@@ -52,4 +53,5 @@ async def chat(request: ChatRequest):
 
     # Return the assistant's response
     return {"response": completion.choices[0].message.content}
+
 
