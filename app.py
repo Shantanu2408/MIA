@@ -6,6 +6,10 @@ from openai import OpenAI
 # Initialize FastAPI app
 app = FastAPI()
 
+@app.get("/")
+def root():
+    return{"status": "running"}
+
 # Define your endpoint, deployment name, and API key
 endpoint = "https://shant-mjjz4han-eastus2.cognitiveservices.azure.com/openai/v1"  # Replace with your actual endpoint URL
 deployment_name = "gpt-4o-standard"
@@ -48,3 +52,4 @@ async def chat(request: ChatRequest):
 
     # Return the assistant's response
     return {"response": completion.choices[0].message.content}
+
